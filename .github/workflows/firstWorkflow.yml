@@ -1,2 +1,12 @@
 name: demo
 on: push
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step-1
+        run: echo "[INFO] Current hostname - `hostname`"
+      - name: step-2
+        run: echo "[INFO] Current time - `date`"
+      
