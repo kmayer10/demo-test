@@ -20,3 +20,11 @@ jobs:
           echo `pwd` >> myartifact.txt
           echo `ls -ltr` >> myartifact.txt
           echo `hostname` >> myartifact.txt
+          echo [READING FILE]
+          cat myartifact.txt
+      - name: upload artifact
+        uses: actions/upload-artifact@v5.0.0
+        with: 
+          name: myartifacts
+          path: myartifact.txt
+          
