@@ -1,12 +1,22 @@
-name: demo
-on: push
+name: my-first-workflow
+# To get a trigger on every push in this repo in any branch
+on:
+  push:
 
 jobs:
   job1:
+    name: JOB1
     runs-on: ubuntu-latest
-    steps:
-      - name: step-1
-        run: echo "[INFO] Current hostname - `hostname`"
-      - name: step-2
-        run: echo "[INFO] Current time - `date`"
-      
+    steps: 
+      - name: Step-1
+        run: |
+          pwd
+          ls -ltr
+          hostname
+      - name: Step-2 - Checkout
+        uses: actions/checkout@v5.0.0
+      - name: Step-3
+        run: |
+          echo `pwd` >> myartifact.txt
+          echo `ls -ltr` >> myartifact.txt
+          echo `hostname` >> myartifact.txt
