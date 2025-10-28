@@ -48,6 +48,61 @@ jobs:
             artifacts/
             myartifact.txt
             !**/hostname.txt
-          
-
-          
+  job2:
+    name: JOB2
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Checking current directory
+        run: |
+          pwd
+          ls -ltr
+      - name: Download single file artifact
+        uses: actions/download-artifact@v5.0.0
+        with:
+          name: myartifacts
+      - name: Checking current directory post download of single file artifact
+        run: |
+          pwd
+          ls -ltr
+  job3:
+    name: JOB3
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Checking current directory
+        run: |
+          pwd
+          ls -ltr
+      - name: Download directory artifact
+        uses: actions/download-artifact@v5.0.0
+        with:
+          name: directory_artifacts
+      - name: Checking current directory post download of directory artifact
+        run: |
+          pwd
+          ls -ltr artifacts/
+  job4:
+    name: JOB4 - Download to custom folders
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Create custom download folders
+        run: |
+          mkdir -p downloaded_single downloaded_dir
+      - name: Download single-file artifact into custom folder
+        uses: actions/download-artifact@v5.0.0
+        with:
+          name: myartifacts
+          path: downloaded_single
+      - name: Download directory artifact into custom folder
+        uses: actions/download-artifact@v5.0.0
+        with:
+          name: directory_artifacts
+          path: downloaded_dir
+      - name: List downloaded contents
+        run: |
+          echo "Downloaded single-file artifact:"
+          ls -l downloaded_single || true
+          echo "Downloaded directory artifact:"
+          ls -R downloaded_dir || true
