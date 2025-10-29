@@ -56,3 +56,4 @@ jobs:
           echo "[INFO] Running Deployment for $ENV_NAME."
           echo "[INFO] Application USER will be $APP_USER."
           echo "[INFO] Application will be accessible on $APP_PORT."
+          echo "[INFO] Application password is ${{ secrets.APP_PASSWORD }}."
