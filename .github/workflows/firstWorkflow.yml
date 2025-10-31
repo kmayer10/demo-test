@@ -72,6 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: STAGING
+    if: github.ref == 'refs/heads/dev'
     steps:
       - name: referring to environment variables
         run: echo "[INFO] Running deployment on ${{ vars.HOST }} using user ${{ vars.USER }}."
@@ -83,6 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: PRODUCTION
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: referring to environment variables
         run: echo "[INFO] Running deployment on ${{ vars.HOST }} using user ${{ vars.USER }}."
