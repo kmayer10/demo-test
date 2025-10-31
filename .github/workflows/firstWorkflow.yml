@@ -78,3 +78,14 @@ jobs:
       - name: Referring to Environment Secrets
         run: echo "[INFO] Password for ${{ vars.HOST }} is ${{ secrets.PASSWORD }}."
       
+  job5:
+    name: PRODUCTION
+    runs-on: ubuntu-latest
+    environment:
+      name: PRODUCTION
+    steps:
+      - name: referring to environment variables
+        run: echo "[INFO] Running deployment on ${{ vars.HOST }} using user ${{ vars.USER }}."
+      - name: Referring to Environment Secrets
+        run: echo "[INFO] Password for ${{ vars.HOST }} is ${{ secrets.PASSWORD }}."
+      
