@@ -64,7 +64,7 @@ jobs:
       - name: Referring Context or In-Built Variables
         run: |
           echo "[INFO] This Pipeline is triggered by ${{ github.event_name }} event."
-          echo "[INFO] This pipeline is running in ${{ github.ref_name }} event."
+          echo "[INFO] This pipeline is running in ${{ github.head_ref }} event."
           echo "[INFO] This build is triggered by ${{ github.actor }} with commit id ${{ github.sha }},"
           echo "[INFO] Current Job with JOB ID ${{ job.check_run_id}} is Running on ${{ runner.os }} operating system."
   job4:
