@@ -1,4 +1,4 @@
-exname: my-first-workflow
+name: my-first-workflow
 # To get a trigger on every push in this repo in any branch
 on:
   push:
@@ -61,7 +61,7 @@ jobs:
     name: JOB3
     runs-on: ubuntu-latest
     steps:
-      - name: Referring Context or In Built Variables
+      - name: Referring Context or In-Built Variables
         run: |
           echo "[INFO] This Pipeline is triggered by ${{ github.event_name }} event."
           echo "[INFO] This pipeline is running in ${{ github.ref_name }} event."
